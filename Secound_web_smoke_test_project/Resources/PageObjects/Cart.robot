@@ -26,3 +26,8 @@ Fill in the checkout information form and continue
     Input Text     ${LAST_NAME_FIELD}     ${last_name}
     Input Text     ${POSTAL_CODE_FIELD}   ${postal_code}
     Click Button   ${BT_CONTINUE}
+
+Verify "Shopping Cart" page is loaded
+    Wait Until Page Contains Element     xpath=//*[@id="cart_contents_container"]/div/div[2]
+    Wait Until Page Contains             Your Cart
+    

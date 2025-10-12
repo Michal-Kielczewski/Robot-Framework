@@ -50,3 +50,10 @@ Open "Sauce Labs Backpack" PDP
     Wait Until Page Contains Element        ${ALL_PLP_ITEMS}
     Click Element                           ${PRODUCT_"Sauce Labs Backpack"} 
     
+
+Add first product to cart
+    Wait Until Page Contains Element        ${ALL_PLP_ITEMS}
+    Click Button                            xpath=//*[@id="add-to-cart-sauce-labs-bike-light"]
+
+
+    

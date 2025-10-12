@@ -17,4 +17,7 @@ Click "Shopping Cart" icon
     Wait Until Page Contains Element    xpath=//*[@id="shopping_cart_container"]/a
     Click Element                       xpath=//*[@id="shopping_cart_container"]/a
 
+Verify cart icon counter is updated to 1 after adding a product to cart from PLP
+    Wait Until Page Contains Element        xpath=//*[@id="shopping_cart_container"]/a/span
+    Element Text Should Be                  xpath=//*[@id="shopping_cart_container"]/a/span    1
 

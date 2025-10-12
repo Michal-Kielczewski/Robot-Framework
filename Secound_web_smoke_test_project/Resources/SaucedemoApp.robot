@@ -9,6 +9,7 @@ Resource       ../Resources/PageObjects/Checkout.robot
 *** Variables ***
 ${LOGIN_PAGE_URL}
 @{VALID_CREDENTIALS}
+@{CUSTOMER_INFO}
 
 *** Keywords ***
 Navigate to "Login" page
@@ -39,17 +40,26 @@ Check sorting functionality
     PLP_Page.Click "Sort" dropdown and select "Price (high to low)"
     PLP_Page.Verify that the products are sorted by price (high to low)
 
-Adding product to cart from PDP
+Navigate to the PDP by clicking on a product from the PLP
     PLP_Page.Open "Sauce Labs Backpack" PDP
     PDP_Page.Verify product details content is correct for product "Sauce Labs Backpack"
+
+Adding product to cart from PDP
     PDP_Page.Click "Add to cart" button
 
-Finalizing purchase
+Navigate to the Shopping Cart page
     NavBar.Click "Shopping Cart" icon
+    Cart.Verify "Shopping Cart" page is loaded
+
+Finalizing purchase
+    [Arguments]   @{CUSTOMER_INFO}
     Cart.Click "Checkout" CTA in the Shopping Cart
     Checkout.Verify "Checkout Step One" page is loaded
-    Checkout.Fill in the checkout information form and continue
+    Checkout.Fill in the checkout information form and continue    @{CUSTOMER_INFO}
     Checkout.Complete "checkout-step-two"
     Checkout.Verify "checkout-complete" page is loaded
     Checkout.Click "back to products" and verify redirection to PLP
 
+Adding product to cart from PLP
+    PLP_Page.Add first product to cart
+    NavBar.Verify cart icon counter is updated to 1 after adding a product to cart from PLP

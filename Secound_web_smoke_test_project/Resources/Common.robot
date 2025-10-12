@@ -14,6 +14,8 @@ Open Chrome With Disabled Password Manager
     ...    profile.password_manager_enabled=${FALSE}
     ...    profile.password_manager_leak_detection=${FALSE}
     Call Method    ${chrome_options}    add_experimental_option    prefs    ${prefs}
+    Call Method    ${chrome_options}    add_argument    --headless
+    Call Method    ${chrome_options}    add_argument    --disable-gpu
     Create Webdriver    Chrome    options=${chrome_options}
 
 Begin Web Test

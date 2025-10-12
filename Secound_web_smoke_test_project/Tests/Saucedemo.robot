@@ -16,49 +16,77 @@ ${LOGIN_PAGE_URL}                      https://www.saucedemo.com/
 @{CUSTOMER_INFO}                       John    Doe    12345
 ***test cases***
 
+Should be able to navigate to the "login" page
+    [Documentation]     Test verifies that the user can navigate to the "Login" page.
+    [Tags]    0001    Smoke    LoginPage
+    SaucedemoApp.Navigate to "Login" page
 
 Logging in with correct credentials
     [Documentation]     Test verifies that logging in with valid credentials redirects user to Product Listing Page, and logout option is available after login.
-    [Tags]    0001    Smoke    LoginPage
+    [Tags]    0002    Smoke    LoginPage
     SaucedemoApp.Navigate to "Login" page
     SaucedemoApp.Login with valid credentials   @{VALID_CREDENTIALS}
     SaucedemoApp.Logout user
 
 Logging in with a blocked user credentials
     [Documentation]     Test verifies that logging in with a blocked user credentials displays an error message.
-    [Tags]    0002    Smoke    LoginPage
+    [Tags]    0003    Smoke    LoginPage
     SaucedemoApp.Navigate to "Login" page
     SaucedemoApp.Login with valid blocked user credentials   @{VALID_BLOCKED_USER_CREDENTIALS}
 
 Logging in with incorrect credentials
     [Documentation]     Test verifies that logging in with incorrect credentials displays an error message.
-    [Tags]    0003    Smoke    LoginPage
+    [Tags]    0004    Smoke    LoginPage
     SaucedemoApp.Navigate to "Login" page
     SaucedemoApp.Login with invalid credentials    @{INVALID_CREDENTIALS}
 
+Should be able to navigate to the PLP page
+    [Documentation]    Test verifies that the user can navigate to the Product Listing Page after successful login.
+    [Tags]    0005    Smoke    PLP_Page
+    SaucedemoApp.Navigate to "Login" page
+    SaucedemoApp.Login with valid credentials   @{VALID_CREDENTIALS}
+
 Verification of sorting functionality in the product listing page
     [Documentation]     Test verifies that sorting functionality works correctly on the Product Listing Page.
-    [Tags]    0004    Smoke    PLP_Page    
+    [Tags]    0006    Smoke    PLP_Page    
     SaucedemoApp.Navigate to "Login" page
     SaucedemoApp.Login with valid credentials   @{VALID_CREDENTIALS}
     SaucedemoApp.Check sorting functionality
     SaucedemoApp.Logout user
 
-The user should be able to add product to cart from PDP
-    [Documentation]    Test verifies that adding a product "Sauce Labs Backpack" from the Product Details Page is working and the cart icon counter increases.
-    [Tags]    0005    Smoke    PDP_Page    
+Should be able to navigate to the PDP page
+    [Documentation]   Test verifies that the user can navigate to the Product Details Page by clicking on a product from the Product Listing Page.
+    [Tags]    0007    Smoke    PDP_Page
     SaucedemoApp.Navigate to "Login" page
     SaucedemoApp.Login with valid credentials   @{VALID_CREDENTIALS}
+    SaucedemoApp.Navigate to the PDP by clicking on a product from the PLP   
+
+The user should be able to add product to cart from PDP
+    [Documentation]    Test verifies that adding a product "Sauce Labs Backpack" from the Product Details Page is working and the cart icon counter increases.
+    [Tags]    0008    Smoke    PDP_Page    
+    SaucedemoApp.Navigate to "Login" page
+    SaucedemoApp.Login with valid credentials   @{VALID_CREDENTIALS}
+    SaucedemoApp.Navigate to the PDP by clicking on a product from the PLP
     SaucedemoApp.Adding product to cart from PDP
     SaucedemoApp.Logout user
 
+Should be able to navigate to the Shopping Cart page
+    [Documentation]   Test verifies that clicking on the cart icon redirects the user to the Shopping Cart page (cart.html).
+    [Tags]    0009    Smoke    Checkout
+    SaucedemoApp.Navigate to "Login" page
+    SaucedemoApp.Login with valid credentials   @{VALID_CREDENTIALS}
+    SaucedemoApp.Adding product to cart from PLP
+    SaucedemoApp.Navigate to the Shopping Cart page
+
 The user should be able to complete the transaction
-   [Documentation]    Test verifies that clicking "Checkout" in the cart redirects the user to the information form page (checkout-step-one.html).
-    [Tags]    0006    Smoke    Checkout
-     SaucedemoApp.Navigate to "Login" page
-     SaucedemoApp.Login with valid credentials   @{VALID_CREDENTIALS}
-     SaucedemoApp.Adding product to cart from PDP
-     SaucedemoApp.Finalizing purchase
+    [Documentation]    Test verifies that clicking "Checkout" in the cart redirects the user to the information form page (checkout-step-one.html).
+    [Tags]    0010    Smoke    Checkout
+    SaucedemoApp.Navigate to "Login" page
+    SaucedemoApp.Login with valid credentials   @{VALID_CREDENTIALS}
+    SaucedemoApp.Navigate to the PDP by clicking on a product from the PLP
+    SaucedemoApp.Adding product to cart from PDP
+    SaucedemoApp.Navigate to the Shopping Cart page
+    SaucedemoApp.Finalizing purchase    @{CUSTOMER_INFO}
     
 
 # Viewing cart contents
