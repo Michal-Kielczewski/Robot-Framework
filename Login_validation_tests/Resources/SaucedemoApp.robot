@@ -7,7 +7,7 @@ Resource       ../Resources/PageObjects/NavBar.robot
 
 
 *** Keywords ***
-Test multiple logins Scenarios
+Test Multiple Login Scenarios
     [Arguments]        ${Credentials}
     Navigate to "Login" page    
     LoginPage.Enter Credenials    ${Credentials}

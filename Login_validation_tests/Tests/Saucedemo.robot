@@ -16,7 +16,6 @@ ${BROWSER}                             Chrome
 #input data for test cases
 @{CUSTOMER_INFO}                       John    Doe    12345
 @{VALID_CREDENTIALS}                   standard_user    secret_sauce
-@{VALID_CREDENTIALS_ERROR_USER}        error_user       secret_sauce
 &{VALID_BLOCKED_USER_CREDENTIALS}          Username=locked_out_user     Password=secret_sauce        ExpectedErrorMessage=Epic sadface: Sorry, this user has been locked out.
 &{INVALID_CREDENTIALS}                     Username=invalid_user        Password=invalid_password    ExpectedErrorMessage=Epic sadface: Username and password do not match any user in this service
 &{INVALID_CREDENTIALS_NO_PASSWORD}         Username=standard_user       Password=#BLANK              ExpectedErrorMessage=Epic sadface: Password is required
@@ -41,7 +40,7 @@ Logging in with correct credentials
 Multiple invalid login sceenarios should display correct error messages
     [Documentation]     Test verifies that logging in with invalid credentials displays correct error messages.
     [Tags]    0003    Regression    LoginPage
-    [Template]  Test multiple logins Scenarios
+    [Template]  Test Multiple Login Scenarios
     ${VALID_BLOCKED_USER_CREDENTIALS}
     ${INVALID_CREDENTIALS}
     ${INVALID_CREDENTIALS_NO_PASSWORD}
